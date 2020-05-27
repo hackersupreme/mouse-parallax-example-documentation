@@ -37,6 +37,7 @@ onMouseMove={(e) => set({ xy: calc(e.clientX, e.clientY)})}
 is equal to
 onMouseMove={({ clientX: x, clientY: y}) => set({ xy: calc(x, y)})}
 ```
+[This](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) is some documentation on the Mouse Event. 
 
 The `set` function sets the `props` object's `xy` property by passing the values `x` and `y` values through the `calc` function. The `calc` function takes in the coordinates (x, y) and 
 
