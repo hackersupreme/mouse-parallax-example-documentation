@@ -11,7 +11,7 @@ Content
 
 The spring-based animation library [React Spring](https://www.react-spring.io/) can be used to create a variety of interesting and unique user experiences.
 
-On their site they have a list of some use cases for the library. One I really like and see a bit on creative sites like those belonging to marketing agencies is the mouse parallax. 
+On their site they have a list of some use cases for the library. One I really like and see a bit on creative sites is the mouse parallax. 
 
 The mouse parallax is an effect where different elements on the page respond with different degrees of movement to the mouse moving across the window. This effect can turn a static illustration into a more lively and stimulating experience.
 
@@ -31,9 +31,9 @@ There is a variable set by the `useSpring` hook called `props`. The variable is 
 
 The `xy` property has a two item array with the current `(x, y)` coordinates stored in it while the `config` property has an object that describes how the animation is configured. Read [here](https://www.react-spring.io/docs/hooks/api) to find out more about the `config` property.
 
-There are a series of functions that each take in the coordinates `(x, y)` and return a string that describes a transform property. The different math calculations in these functions account for the difference in movement when the mouse moves, creating the parallax effect.
 
-The container element has an event listener `onMouseMove` that waits for the mouse to move in the window. When this happens, a function is fired that takes in an object with the event's `clientX` and `clientY` values, assigns them to the variables `x` and `y`, and passes them through the `set` function. If you don't recognize the notation in the arrow function, that's okay. It's the same as writing the following:
+
+The container element has an event listener `onMouseMove` that waits for the mouse to move in the window. When this happens, a function is fired that takes in an object with the mouse event's `clientX` and `clientY` values, assigns them to the variables `x` and `y`, and passes them through the `set` function. If you don't recognize the notation in the arrow function, that's okay. It's the same as writing the following:
 ```
 onMouseMove={(e) => set({ xy: calc(e.clientX, e.clientY)})}
 ===is equal to===
@@ -41,10 +41,11 @@ onMouseMove={({ clientX: x, clientY: y}) => set({ xy: calc(x, y)})}
 ```
 [This](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) is some documentation on the Mouse Event and [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_function_parameter) is some documentation on the object declaration in the function.
 
-The clientX and clientY properties are used because the animation is happening within the viewport of the browser. Read [this](https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y) stack overflow page for a good, short comparison of the different X,Y coordinates available.
+The clientX and clientY properties are used because the animation is happening within the viewport of the browser. Read [this](https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y) stack overflow page for a good, short comparison of the different coordinates available.
 
-The `set` function sets the `props` object's `xy` property by passing the values `x` and `y` values through the `calc` function. The `calc` function takes in the coordinates (x, y) and 
+The `set` function sets the `props` object's `xy` property by passing the values `x` and `y`  through the `calc` function. The `calc` function takes in the coordinates (x, y) and returns the distance between the mouse within the visible page and the center of the visible page.
 
+There are a series of functions that each take in the coordinates `(x, y)` and return a string that describes a transform property. The different math calculations in these functions account for the difference in movement when the mouse moves, creating the parallax effect.
 
 Here's all of the javascript for the example: 
 ```
