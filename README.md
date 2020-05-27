@@ -85,8 +85,9 @@ http://hackersupreme.com
 
 ### Resources
 
--[React Spring Official Docs](https://www.react-spring.io/)
--[React Spring useSpring Hook](https://www.react-spring.io/docs/hooks/use-spring)
--[Mouse Event Documentation](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
--[ClientX PageX ScreenX Comparison](https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y)
--[Object Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_function_parameter)
+- [React Spring Official Docs](https://www.react-spring.io/)
+- [React Spring useSpring Hook](https://www.react-spring.io/docs/hooks/use-spring)
+- [React Spring Config](https://www.react-spring.io/docs/hooks/api)
+- [Mouse Event Documentation](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
+- [ClientX PageX ScreenX Comparison](https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y)
+- [Object Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_function_parameter)
