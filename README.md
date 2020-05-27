@@ -23,17 +23,13 @@ https://codesandbox.io/s/r5x34869vq?from-embed
 
 ## Documentation
 
-This example has a background image of a beach with a cloud, bird, and sun in the foreground.
+This example has a background image of a beach with a cloud, bird, and sun in the foreground. When you move the mouse, each image moves separately.
 
-The html for this example is relatively simple. There is a container `div` element that holds four `animated.div` elements. The `animated.div` elements have their images set in CSS as background images. 
+The html for this example is relatively simple. There is a container `div` element that holds four `animated.div` elements. The `animated.div` elements have their images set in CSS as background images. The `animated` component is imported from React Spring and is required for the library to perform animations. You can think of it as a special `div`.
 
-There is a variable set by the `useSpring` hook called `props`. The variable is an object with the properties `xy` and `config` and is updated by the function `set`. 
+There is a variable set by the `useSpring` hook called `props`. This variable controls the animation behind the parallax. The variable is an object with the properties `xy` and `config` and is updated by the function `set`. The `xy` property has a two item array with the current `(x, y)` coordinates stored in it while the `config` property has an object that describes how the animation is configured. Read [here](https://www.react-spring.io/docs/hooks/api) to find out more about the `config` property.
 
-The `xy` property has a two item array with the current `(x, y)` coordinates stored in it while the `config` property has an object that describes how the animation is configured. Read [here](https://www.react-spring.io/docs/hooks/api) to find out more about the `config` property.
-
-
-
-The container element has an event listener `onMouseMove` that waits for the mouse to move in the window. When this happens, a function is fired that takes in an object with the mouse event's `clientX` and `clientY` values, assigns them to the variables `x` and `y`, and passes them through the `set` function. If you don't recognize the notation in the arrow function, that's okay. It's the same as writing the following:
+The container `div` has an event listener `onMouseMove` that waits for the mouse to move in the window. When this happens, a function is fired that takes in an object with the mouse event's `clientX` and `clientY` values, assigns them to the variables `x` and `y`, and passes them through the `set` function. If you don't recognize the notation in the arrow function, that's okay. It's the same as writing the following:
 ```
 onMouseMove={(e) => set({ xy: calc(e.clientX, e.clientY)})}
 ===is equal to===
@@ -43,9 +39,9 @@ onMouseMove={({ clientX: x, clientY: y}) => set({ xy: calc(x, y)})}
 
 The clientX and clientY properties are used because the animation is happening within the viewport of the browser. Read [this](https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y) stack overflow page for a good, short comparison of the different coordinates available.
 
-The `set` function sets the `props` object's `xy` property by passing the values `x` and `y`  through the `calc` function. The `calc` function takes in the coordinates (x, y) and returns the distance between the mouse within the visible page and the center of the visible page.
+The `set` function sets the `props` object's `xy` property by passing the values `x` and `y`  through the `calc` function. The `calc` function takes in the coordinates (x, y) and returns an array of coordinates describing the distance between the mouse and the center of the visible page.
 
-There are a series of functions that each take in the coordinates `(x, y)` and return a string that describes a transform property. The different math calculations in these functions account for the difference in movement when the mouse moves, creating the parallax effect.
+When the `xy` property of the `props` object is updated, it gets passed to each instance of `animated.div` through a unique function that returns a string describing a transform property. The different math calculations in these functions account for the difference in movement when the mouse moves, creating the parallax effect.
 
 Here's all of the javascript for the example: 
 ```
@@ -75,5 +71,22 @@ function Card() {
 ReactDOM.render(<Card />, document.getElementById('root'))
 ```
 
+That's it! If you have any questions check out the resources below or reach out to me.
 
 ## Resources / Contact Info
+
+### Email
+
+jeffgsch@gmail.com
+
+### Website
+
+http://hackersupreme.com
+
+### Resources
+
+-[React Spring Official Docs](https://www.react-spring.io/)
+-[React Spring useSpring Hook](https://www.react-spring.io/docs/hooks/use-spring)
+-[Mouse Event Documentation](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
+-[ClientX PageX ScreenX Comparison](https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y)
+-[Object Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_function_parameter)
